@@ -1,0 +1,63 @@
+# ESCAPE - the COMMAND CHARACTER
+# ===============================================================
+# escape ^aa  # default
+escape ^pp  # suggested binding for emacs users
+
+#shell -$SHELL 			# i'll take my default shell.	
+
+# display message when there is activity in a window
+activity 'activity %n'
+
+# change time display
+#  default = "%c:%s %M %d %H%? %l%?"
+#time "%M %d %c:%s"
+
+# # Pretty status bar at the bottom.
+# caption always "%{yK}   -=%H=- | $LOGNAME | %{yK}%c |%{yK}%-Lw%{yK}%50>%{Ky}%n%f* %t%{-}%+Lw%<%{- Wk}"
+#
+# caption always "%m/%d/%y %0c%{=b kW} %{=r kd}%-Lw%{= bd}%50>%n%f*%t%{-}%+Lw%<%{- Wk}"
+#caption always
+#caption always "%?%F%{= Bk}%? %C%A %D %d-%m-%Y %{= kB} %t%= %?%F%{= Bk}%:%{=wk}%? %n "
+#caption always "%{=r kd}%-Lw%{= bd}%50>%n%f*%t%{-}%+Lw%<%{- Wk}"
+#
+#caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+# add time:
+caption always "%-Lw%{= BW}%50>%n%f* %t%{-}%+Lw%<"
+
+# Affects the copying of text regions
+crlf off    	      	      # default: off
+  
+# from http://blog.madism.org/index.php/2005/08/19/39-back-from-the-deads-screenrc-zshrc
+# Make Shift+PgUp/PgDown work in screen
+#
+# well, this is complete dark magic, but it works :
+#
+# tell screen that you term can scroll
+termcapinfo xterm ti@:te@
+# bind Shift+PgUp/PgDn
+bindkey -m "^[[5;2~" stuff ^b
+bindkey -m "^[[6;2~" stuff ^f
+
+## Make scroll wheel / two-finger scrolling work
+## http://unix.stackexchange.com/questions/43229/is-there-a-way-to-make-screen-scroll-like-a-normal-terminal
+#termcapinfo rxvt ti@:te@
+#termcapinfo rxvt 'hs:ts=\E]2;:fs=07:ds=\E]2;screen07'
+#termcapinfo xterm ti@:te@
+#termcapinfo xterm 'hs:ts=\E]2;:fs=07:ds=\E]2;screen07'
+
+# Support unicode by default.  Might also need to start screen with -U
+# from http://gentoo-wiki.com/HOWTO_Make_your_system_use_unicode/utf-8     
+defutf8 on
+
+# From: http://www.hanhuy.com/pfn/integrating_screen_and_clipboard
+# Use these keystrokes to intuitively get to windows 10-19
+bind ) select 10
+bind ! select 11
+bind @ select 12
+bind \043 select 13
+bind $ select 14
+bind % select 15
+bind \136 select 16
+bind & select 17
+bind * select 18
+bind ( select 19
