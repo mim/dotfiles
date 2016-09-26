@@ -22,21 +22,23 @@ end
 
 % Paths
 if ispc
-    addpath('Z:\code\matlab', 'Z:\code\matlab\mimLib')
+    matlabBaseDir = 'Z:\code\matlab';
     diaryDir = 'D:\matlab_diary\';
 else
+    matlabBaseDir = '~/code/matlab';
     [~,home] = system('echo $HOME');
-    addpath('~/code/matlab', '~/code/matlab/mimLib')
     diaryDir = fullfile(home(1:end-1), '.matlab_diary/');
-    %warning('mim:startup:nodiary', 'No diary on linux')
 end
-dirs = findMatlabDirs(true);
-addpath('.', dirs{:});
+addpath('.')
+addpath(matlabBaseDir);
+addpath(fullfile(matlabBaseDir, 'mimLib'));
+dirs = findMatlabDirs(matlabBaseDir);
+addpath(dirs{:});
 clear dirs
 
-% Turn off warnings
-warning('off', 'MATLAB:audiovideo:wavread:functionToBeRemoved');
-warning('off', 'MATLAB:audiovideo:wavwrite:functionToBeRemoved');
+%% Turn off wavread warnings
+%warning('off', 'MATLAB:audiovideo:wavread:functionToBeRemoved');
+%warning('off', 'MATLAB:audiovideo:wavwrite:functionToBeRemoved');
 
 % Infinite history
 ensureDirExists(diaryDir);
