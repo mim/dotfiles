@@ -19,6 +19,7 @@ alias ll='ls -l'
 alias lll='ll'
 alias lls='ls'
 alias lsl='ls'
+alias ec='emacsclient -n'
 alias dmesg='dmesg -T'
 alias today='date +%Y%m%d'
 alias thes='dict -d moby-thesaurus'
@@ -34,7 +35,7 @@ alias vncd='x11vnc -safer -localhost -nopw -once -display :0 -noxdamage'
 alias fixSpotifyRes="sudo sed -i 's/spotify %U/spotify --force-device-scale-factor=1.8 %U/' /usr/share/applications/spotify.desktop"
 alias nmr='sudo /etc/init.d/network-manager restart'
 
-alias umrpc='unison-2.40 -auto mr-pc'
+alias umrpc='unison -auto mr-pc'
 alias utile='unison-2.32 -auto tile'
 alias grep='grep --color=auto'
 
@@ -61,6 +62,12 @@ export BSTINPUTS=".:$HOME/articles/bst:"
 export PATH=$PATH:/u/drspeech/opt/htk-3.4.1/x86_64/bin
 export PATH=$PATH:/u/drspeech/opt/matlabR2015b/bin
 export PATH=$PATH:/u/drspeech/bin
+
+# CUDA path stuff
+export CUDA_HOME=/usr/local/cuda-8.0
+export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
 
 [ -f ~/.bash_secrets ] && source ~/.bash_secrets
 
