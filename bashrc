@@ -59,14 +59,18 @@ export BIBINPUTS=".:$HOME/articles/bib:"
 export BSTINPUTS=".:$HOME/articles/bst:"
 
 # HTK path on slate machines
-export PATH=$PATH:/u/drspeech/opt/htk-3.4.1/x86_64/bin
-export PATH=$PATH:/u/drspeech/opt/matlabR2015b/bin
-export PATH=$PATH:/u/drspeech/bin
-
+if [ -d /u/drspeech ] ; then
+    export PATH=$PATH:/u/drspeech/opt/htk-3.4.1/x86_64/bin
+    export PATH=$PATH:/u/drspeech/opt/matlabR2015b/bin
+    export PATH=$PATH:/u/drspeech/bin
+fi
+    
 # CUDA path stuff
-export CUDA_HOME=/usr/local/cuda-8.0
-export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+if [ -d /usr/loca/cuda-8.0 ] ; then
+   export CUDA_HOME=/usr/local/cuda-8.0
+   export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
+   export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+fi
 
 
 [ -f ~/.bash_secrets ] && source ~/.bash_secrets
